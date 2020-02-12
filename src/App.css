@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Courgette&display=swap");
 body {
   background-image: url("./Landing/burung.jpg");
   background-size: cover;
@@ -10,16 +11,19 @@ h3 {
   color: whitesmoke;
   font-size: 35px;
   text-shadow: 1px 2px 1px grey;
+  font-family: "Courgette", cursive;
 }
 h1 {
   color: whitesmoke;
   font-size: 50px;
   text-shadow: 1px 2px 1px grey;
+  font-family: "Courgette", cursive;
 }
 
 h4 {
-  color: whitesmoke;
+  color: rgb(218, 206, 206);
   font-size: 20px;
+  font-family: "Courgette", cursive;
 }
 
 h5 {
@@ -27,4 +31,13 @@ h5 {
   font-size: 50px;
   color: whitesmoke;
   text-shadow: 1px 2px 1px grey;
+  font-family: "Courgette", cursive;
+}
+
+.modalT {
+  margin-left: 200px;
+}
+
+.font {
+  font-family: "Courgette", cursive;
 }
