@@ -7,24 +7,24 @@ body {
   height: auto;
 }
 h3 {
-  color: rgb(250, 231, 231);
+  color: whitesmoke;
   font-size: 35px;
   text-shadow: 1px 2px 1px grey;
 }
 h1 {
-  color: rgb(250, 231, 231);
+  color: whitesmoke;
   font-size: 50px;
   text-shadow: 1px 2px 1px grey;
 }
 
 h4 {
-  color: rgb(250, 231, 231);
+  color: whitesmoke;
   font-size: 20px;
 }
 
 h5 {
   /* background-color: rgb(91, 192, 231); */
   font-size: 50px;
-  color: rgb(250, 231, 231);
+  color: whitesmoke;
   text-shadow: 1px 2px 1px grey;
 }

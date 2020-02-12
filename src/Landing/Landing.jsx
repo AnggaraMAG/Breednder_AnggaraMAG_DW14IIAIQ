@@ -10,7 +10,7 @@ export default class Landing extends Component {
                     <Row className="mt-5">
                         <Col className="float-left"><h3>BreedNder</h3></Col>
                         <Col>
-                            <Button variant="success" className="float-right" size="lg">Login</Button>
+                            <Button variant="outline-success" className="float-right" size="lg">Login</Button>
                         </Col>
                     </Row>
                     <Row className="mt-5">
@@ -27,7 +27,7 @@ export default class Landing extends Component {
                         </Col>
                     </Row>
                     <Row className="mt-5">
-                        <Col className="text-center"><Button size="lg" variant="success">Register Now!</Button></Col>
+                        <Col className="text-center"><Button size="lg" variant="outline-success">Register Now!</Button></Col>
                     </Row>
                     <Row className="mt-5">
                         <Col className="text-center">
