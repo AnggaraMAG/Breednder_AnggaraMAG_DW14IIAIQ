@@ -4,6 +4,8 @@ import image3 from "../Landing/kucing.jpg"
 import { Row, Col, Card, Form, Image, Button } from 'react-bootstrap'
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import RangeSlider from 'react-bootstrap-range-slider'
+import Data from '../Home/Data'
+import './Edit.css'
 
 const Edit = () => {
     const [value, setValue] = useState(0);
@@ -62,6 +64,8 @@ const Edit = () => {
                             </Form.Label>
                                 <Form.Control as='select'  >
                                     <option value="" >Adult</option>
+                                    <option value="" >Adult2</option>
+                                    <option value="" >Adult3</option>
                                 </Form.Control>
                             </Form.Group>
                             <Form.Group>
@@ -70,6 +74,7 @@ const Edit = () => {
                             </Form.Label>
                                 <Form.Control as='select'  >
                                     <option value="" >Cat</option>
+                                    <option value="" >Bird</option>
                                 </Form.Control>
                             </Form.Group>
                             <div className="text-center">
@@ -80,25 +85,46 @@ const Edit = () => {
                         </Card.Body>
                     </Card>
                 </Col>
-                <Col className="pad col-8" >
-                    <Card style={{ width: '20rem' }}>
-                        <Row>
-                            <Col className="box">
-                            </Col>
-                        </Row>
-                        <Card.Body>
-                            <Card.Text>
-                                <Form>
-                                    <Form.Control className="mb-4" />
-                                    <Form.Control className="mb-4" />
-                                    <Form.Control className="mb-4" />
-                                    <Form.Control className="mb-4" />
-                                    <Form.Control className="mb-4" />
-                                </Form>
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
+                <div>
+                    <Col style={{ marginTop: 50, marginLeft: 250 }} className="col-8" >
+                        <Card style={{ width: '20rem' }}>
+                            <Row>
+                                <p className="text-center">
+                                    {Data.map((postData, index) => {
+                                        return (
+                                            <div class="box">
+                                                <img
+                                                    src={postData.pics}
+                                                    className="avatar-match-image"
+                                                    alt=""
+                                                />
+                                                <div class="text">
+                                                    <i className="fas fa-user"></i>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </p>
+                            </Row>
+                            <Card.Body>
+                                <Card.Text>
+                                    <Form>
+                                        <Form.Label>Name Pet</Form.Label>
+                                        <Form.Control placeholder="Udin" className="mb-4" />
+                                        <Form.Label>Gender</Form.Label>
+                                        <Form.Control className="mb-4" />
+                                        <Form.Label>Name Pet</Form.Label>
+                                        <Form.Control className="mb-4" />
+                                        <Form.Label>Name Pet</Form.Label>
+                                        <Form.Control className="mb-4" />
+                                        <Form.Label>Name Pet</Form.Label>
+                                        <Form.Control className="mb-4" />
+                                    </Form>
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </div>
             </Row>
         </div>
     )

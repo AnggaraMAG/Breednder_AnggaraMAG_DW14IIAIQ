@@ -11,6 +11,8 @@ const Profile = () => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    // const alert = useAlert()
     return (
         <Row>
             <Col className="col-4">
@@ -55,6 +57,7 @@ const Profile = () => {
                         <Form.Group>
                             Maximum Distance     10km.
                             <RangeSlider
+                                max='10'
                                 value={value}
                                 onChange={changeEvent => setValue(changeEvent.target.value)}
                             />
@@ -143,7 +146,7 @@ const Profile = () => {
                             </Card.Body>
                         </Card>
                         <Modal.Footer>
-                            <Button variant="primary" onClick={handleClose}>
+                            <Button variant="primary" >
                                 Kirim
                         </Button>
                         </Modal.Footer>

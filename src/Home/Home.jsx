@@ -2,10 +2,10 @@ import React from 'react'
 import { Row, Col, Card, Image, Button } from 'react-bootstrap';
 import "./Home.css";
 import image1 from "../Landing/elang.jpg"
-import image3 from "../Landing/kucing.jpg"
 import Deck from '../components/Deck';
 import { Link } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Data from './Data';
 
 const Home = () => {
     return (
@@ -33,8 +33,20 @@ const Home = () => {
                     <Card.Title className="ml-2 text-center">
                         <i className="font">Match.</i>
                     </Card.Title>
-                    <Card.Body style={{ 'maxHeight': '700px', 'overflowY': 'auto' }}>
-                        <Row className="scroll">
+                    <Card.Body style={{ 'maxHeight': '700px', 'overflowY': 'none' }} >
+                        <div>
+                            <Row >
+                                {Data.map((postData) => {
+                                    return (
+                                        <Col xs="4">
+                                            <Card.Img src={postData.pics}></Card.Img>
+                                            <p>{postData.name}</p>
+                                        </Col>
+                                    )
+                                })}
+                            </Row>
+                        </div>
+                        {/* <Row className="scroll">
                             <Col><Card.Img className="#" src={image1}></Card.Img></Col>
                             <Col><Card.Img className="#" src={image3}></Card.Img></Col>
                             <Col><Card.Img className="#" src={image3}></Card.Img></Col>
@@ -58,7 +70,7 @@ const Home = () => {
                             <Col><Card.Img className="#" src={image3}></Card.Img></Col>
                             <Col><Card.Img className="#" src={image1}></Card.Img></Col>
                             <Col><Card.Img className="#" src={image3}></Card.Img></Col>
-                        </Row>
+                        </Row> */}
                     </Card.Body>
                 </Card>
             </Col >
