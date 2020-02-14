@@ -1,0 +1,15 @@
+.aturcard {
+  width: 100px;
+  margin-top: 10px;
+}
+
+.box {
+  background-color: blue;
+  width: 80px;
+  height: 150px;
+}
+
+.pad {
+  margin-top: 100px;
+  margin-left: 200px;
+}

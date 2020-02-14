@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "../App.css";
 import { Container, Row, Col, Button, Modal, Form } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class Landing extends Component {
     constructor(props) {
@@ -45,9 +45,11 @@ export default class Landing extends Component {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="outline-secondary" onClick={() => { this.handleLogin(login) }}>Close</Button>
-                        <Button variant="outline-secondary">
-                            Login
-                        </Button>
+                        <Link to="/home">
+                            <Button variant="outline-secondary">
+                                Login
+                            </Button>
+                        </Link>
                     </Modal.Footer>
                 </Modal>
                 {/*  End Modal Login*/}

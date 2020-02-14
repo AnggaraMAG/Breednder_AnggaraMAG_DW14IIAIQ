@@ -6,6 +6,7 @@ body {
   -moz-background-size-: cover;
   -o-background-size-: cover;
   height: auto;
+  background-repeat: no-repeat;
 }
 h3 {
   color: whitesmoke;

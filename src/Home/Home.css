@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css?family=Courgette&display=swap");
+.bg {
+  background-color: rgb(129, 177, 196);
+}
+.bg-title {
+  background-color: thistle;
+  background: fixed !important;
+}
+/* .scroll {
+  overflow: scroll;
+}
+
+.static {
+  position: fixed;
+} */
+
+.font {
+  font-family: "Courgette", cursive;
+}
+
+.imageU {
+  height: 100px;
+  width: 100px;
+}
+
+.bg-sungai {
+  /* background-image: url("../Landing/gunung.jpg"); */
+  background-size: cover;
+  -webkit-background-size-: cover;
+  -moz-background-size-: cover;
+  -o-background-size-: cover;
+  height: auto;
+  background-repeat: no-repeat;
+}
+
+.scroll {
+  overflow: auto;
+}
+
+.myButton {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  /* box-shadow: 0px 0px 0px 2px #9fb4f2; */
+  /* background: linear-gradient(to bottom, #7892c2 5%, #476e9e 100%); */
+  /* background-color: #7892c2; */
+  /* border-radius: 10px; */
+  /* border: 1px solid #4e6096; */
+  display: inline-block;
+  /* cursor: pointer; */
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 19px;
+  padding: 12px 37px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #283966;
+  background-size: 30px;
+}
+/* .myButton:hover {
+  background: linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+  background-color: #476e9e;
+} */
+.p1 {
+  top: 650px;
+  left: 700px;
+  color: blue;
+}
+.p2 {
+  top: 650px;
+  left: 800px;
+  color: red;
+}
+.p3 {
+  top: 650px;
+  left: 900px;
+  color: orange;
+}
+.p4 {
+  top: 650px;
+  left: 1000px;
+  color: green;
+}
+
+.t1 {
+  top: 750px;
+  left: 700px;
+}
+.t2 {
+  top: 750px;
+  left: 800px;
+}
+.t3 {
+  top: 750px;
+  left: 900px;
+}
+.t4 {
+  top: 750px;
+  left: 1000px;
+}

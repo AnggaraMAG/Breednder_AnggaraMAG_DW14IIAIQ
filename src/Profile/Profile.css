@@ -1,0 +1,29 @@
+.background {
+  background-image: none;
+}
+
+.besar {
+  font-size: 70px;
+}
+
+.geserkiri {
+  margin-left: 1000px;
+}
+
+.flexend {
+  justify-content: flex-end;
+}
+
+.flexcard {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.bgmodal {
+  background-color: aquamarine;
+}
+
+.flex {
+  display: flex;
+}
