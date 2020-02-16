@@ -7,7 +7,7 @@ body::-webkit-scrollbar {
 }
 
 .background {
-  background-image: none;
+  background-image: url("https://images.unsplash.com/photo-1472718888560-1a1292f1cccb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80");
 }
 
 .besar {
@@ -29,9 +29,28 @@ body::-webkit-scrollbar {
 }
 
 .bgmodal {
-  background-color: aquamarine;
+  background-color: rgb(211, 236, 238);
 }
 
 .flex {
   display: flex;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 10px 30px 0px 5px;
+  cursor: pointer;
+}
+
+.hidden input[type="file"] {
+  display: none;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Courgette&display=swap");
+.font {
+  font-family: "Courgette", cursive;
+}
+
+.cardtop {
+  height: 115px;
 }

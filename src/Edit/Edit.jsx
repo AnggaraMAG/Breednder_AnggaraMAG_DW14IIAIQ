@@ -10,20 +10,16 @@ import './Edit.css'
 const Edit = () => {
     const [value, setValue] = useState(0);
     return (
-        <div>
-            <Row>
+        <div className="background">
+            <Row className="font">
                 <Col className="col-4">
                     <Card>
-                        <Card.Header className="bg">
+                        <Card.Header className="bg cardtop">
                             <Row>
-                                <Col>
-                                    <Link to="/profile">
-                                        <Image className="imageU rounded-circle" src={image3}></Image>
-                                    </Link>
-                                </Col>
-                                <Col className="mt-4">
-                                    <h3 className="font">Profile</h3>
-                                </Col>
+                                <Link to="/profile">
+                                    <Image className="imageU rounded-circle" src={image3}></Image>
+                                </Link>
+                                <h3 className="color" style={{ marginTop: 20, marginLeft: 20 }} >Edit Profile Pet</h3>
                             </Row>
                             <div className="mt-3">
                                 <Link to="/home">
@@ -34,50 +30,42 @@ const Edit = () => {
                         </Card.Header>
                         <Card.Body>
                             <Card.Title>
-                                <p>Account Settings</p>
+                                <p>Account Settings</p><hr />
                             </Card.Title>
-                            <Form.Group>
-                                <Form.Label>
-                                    Email
+                            <Form.Label className="mt-3">
+                                Email
                             </Form.Label>
-                                <Form.Control type="email" placeholder="udingambut@gmail.com" readOnly />
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>
-                                    Phone
+                            <Form.Control type="email" placeholder="udingambut@gmail.com" readOnly />
+                            <Form.Label className="mt-3">
+                                Phone
                             </Form.Label>
-                                <Form.Control type="number" placeholder="641644444" readOnly />
-                            </Form.Group>
-                            <Card.Title>
-                                Discovery Settings
-                        </Card.Title>
+                            <Form.Control type="number" placeholder="641644444" readOnly />
+                            <Card.Title className="mt-3">
+                                <p>Discovery Settings</p><hr />
+                            </Card.Title>
+                            Maximum Distance     <b>{value}</b>
                             <Form.Group>
-                                Maximum Distance     10km.
-                            <RangeSlider max='10'
+                                <RangeSlider max='10'
                                     value={value}
                                     onChange={changeEvent => setValue(changeEvent.target.value)}
                                 />
                             </Form.Group>
-                            <Form.Group>
-                                <Form.Label>
-                                    Age
+                            <Form.Label className="mt-3">
+                                Age
                             </Form.Label>
-                                <Form.Control as='select'  >
-                                    <option value="" >Adult</option>
-                                    <option value="" >Adult2</option>
-                                    <option value="" >Adult3</option>
-                                </Form.Control>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>
-                                    Species
+                            <Form.Control as='select'  >
+                                <option value="" >Adult</option>
+                                <option value="" >Adult2</option>
+                                <option value="" >Adult3</option>
+                            </Form.Control>
+                            <Form.Label className="mt-3">
+                                Species
                             </Form.Label>
-                                <Form.Control as='select'  >
-                                    <option value="" >Cat</option>
-                                    <option value="" >Bird</option>
-                                </Form.Control>
-                            </Form.Group>
-                            <div className="text-center">
+                            <Form.Control as='select'  >
+                                <option value="" >Cat</option>
+                                <option value="" >Bird</option>
+                            </Form.Control>
+                            <div className="text-center mt-3">
                                 <Link to="/">
                                     <Button >Logout</Button>
                                 </Link>
@@ -85,12 +73,12 @@ const Edit = () => {
                         </Card.Body>
                     </Card>
                 </Col>
-                <div>
+                <div className="borderR">
                     <Col style={{ marginTop: 50, marginLeft: 250 }} className="col-8" >
                         <Card style={{ width: '20rem' }}>
                             <Row>
                                 <p className="text-center">
-                                    {Data.map((postData, index) => {
+                                    {Data.map((postData) => {
                                         return (
                                             <div class="box">
                                                 <img
@@ -99,29 +87,35 @@ const Edit = () => {
                                                     alt=""
                                                 />
                                                 <div class="text">
-                                                    <i className="fas fa-user"></i>
+                                                    <i className="fas fa-times"></i>
                                                 </div>
                                             </div>
                                         );
                                     })}
                                 </p>
                             </Row>
-                            <Card.Body>
-                                <Card.Text>
-                                    <Form>
-                                        <Form.Label>Name Pet</Form.Label>
-                                        <Form.Control placeholder="Udin" className="mb-4" />
-                                        <Form.Label>Gender</Form.Label>
-                                        <Form.Control className="mb-4" />
-                                        <Form.Label>Name Pet</Form.Label>
-                                        <Form.Control className="mb-4" />
-                                        <Form.Label>Name Pet</Form.Label>
-                                        <Form.Control className="mb-4" />
-                                        <Form.Label>Name Pet</Form.Label>
-                                        <Form.Control className="mb-4" />
-                                    </Form>
-                                </Card.Text>
-                            </Card.Body>
+                            <div className="scrollV">
+                                <Card.Body>
+                                    <Card.Text>
+                                        <Form>
+                                            <Form.Label>Name Pet</Form.Label>
+                                            <Form.Control value="Udin" />
+                                            <Form.Label className="mt-2">Breeder</Form.Label>
+                                            <Form.Control value="Herman" />
+                                            <Form.Label className="mt-2">Gender</Form.Label>
+                                            <Form.Control value="#" />
+                                            <Form.Label className="mt-2">Age</Form.Label>
+                                            <Form.Control value="#" />
+                                            <Form.Label className="mt-2">About Pet</Form.Label>
+                                            <Form.Control value="#" />
+                                            <Link to="/profile">
+                                                <Button className="mt-3">Save</Button>
+                                            </Link>
+                                        </Form>
+                                    </Card.Text>
+                                </Card.Body>
+                            </div>
+
                         </Card>
                     </Col>
                 </div>

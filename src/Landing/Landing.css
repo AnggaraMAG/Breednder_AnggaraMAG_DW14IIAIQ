@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css?family=Courgette&display=swap");
+.font {
+  font-family: "Courgette", cursive;
+}
+body {
+  background-image: url("./burung.jpg");
+  background-size: cover;
+  -webkit-background-size-: cover;
+  -moz-background-size-: cover;
+  -o-background-size-: cover;
+  height: auto;
+  background-repeat: no-repeat;
+}

@@ -1,3 +1,9 @@
+body::-webkit-scrollbar {
+  display: none;
+}
+html {
+  overflow-y: scroll;
+}
 .aturcard {
   width: 100px;
   margin-top: 40px;
@@ -26,4 +32,26 @@
   color: #fff;
   width: 5%; /* Set the width of the positioned div */
   text-shadow: 2px 2px black;
+}
+
+.cardtop {
+  height: 115px;
+}
+
+.color {
+  color: black;
+}
+
+.background {
+  background-image: url("https://images.unsplash.com/photo-1472718888560-1a1292f1cccb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80");
+}
+
+.borderR {
+  border-radius: 100px;
+}
+
+.scrollV {
+  overflow-y: scroll;
+  height: 350px;
+  width: 330px;
 }

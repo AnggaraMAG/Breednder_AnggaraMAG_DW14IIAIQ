@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import image3 from "../Landing/kucing.jpg"
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import RangeSlider from 'react-bootstrap-range-slider';
+import './Profile.css'
 
 const Profile = () => {
     const [value, setValue] = useState(0);
@@ -14,26 +15,22 @@ const Profile = () => {
 
     // const alert = useAlert()
     return (
-        <Row>
+        <Row className="font background">
             <Col className="col-4">
                 <Card>
-                    <Card.Header className="bg">
+                    <Card.Header className="bg cardtop">
                         <Row>
-                            <Col>
-                                <Link to="/profile">
-                                    <Image className="imageU rounded-circle" src={image3}></Image>
-                                </Link>
-                            </Col>
-                            <Col className="mt-4">
-                                <h3 className="font">Profile</h3>
-                            </Col>
+                            <Link to="/home">
+                                <Image className="imageU rounded-circle" src={image3}></Image>
+                            </Link>
+                            <span style={{ marginTop: 20, marginLeft: 20 }} ><h3 className="font">Profile</h3></span>
                         </Row>
-                        <div className="mt-3">
+                        {/* <div className="mt-3">
                             <Link to="/home">
                                 <Button variant="outline-light">Home</Button>
                             </Link>
 
-                        </div>
+                        </div> */}
                     </Card.Header>
                     <Card.Body>
                         <Card.Title>
@@ -55,7 +52,7 @@ const Profile = () => {
                             Discovery Settings
                         </Card.Title>
                         <Form.Group>
-                            Maximum Distance     10km.
+                            Maximum Distance    <b>{value}</b>
                             <RangeSlider
                                 max='10'
                                 value={value}
@@ -119,28 +116,36 @@ const Profile = () => {
             <div>
                 <Modal show={show} onHide={handleClose}>
                     <div className="bgmodal">
-                        <Modal.Header closeButton>
+                        <Modal.Header closeButton className="text-center">
                             <Modal.Title>Premium</Modal.Title>
                         </Modal.Header>
                         <Card className="text-center">
-                            <Card.Body>
+                            <Card.Body className="bgmodal">
                                 <Card.Text>
                                     Upgrade Breednder mu dan nikmati fitur fitur <b>PRO.</b>
                                 </Card.Text>
                                 <Card.Text>
                                     Breednder : 9232848427
                             </Card.Text>
-                                <Form>
+                                <Form className="hidden">
                                     <Form.Group>
                                         <Form.Control type="text" placeholder="No Rek Kamu.">
                                         </Form.Control>
                                     </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label>
-                                            <b>Upload Bukti Transfer</b>
-                                        </Form.Label>
-                                        <Form.Control type="file">
-                                        </Form.Control>
+                                    <Form.Group style={{ textAlign: "center" }}>
+                                        <label
+                                            for="bTransferUpload"
+                                            className="custom-file-upload"
+                                        >
+                                            <p>
+                                                <i class="fa fa-camera fa-5x"></i>
+                                                &nbsp;<br></br>Upload Bukti Transfer
+                                            </p>
+                                        </label>
+                                        <Form.Control
+                                            type="file"
+                                            id="bTransferUpload"
+                                        />
                                     </Form.Group>
                                 </Form>
                             </Card.Body>

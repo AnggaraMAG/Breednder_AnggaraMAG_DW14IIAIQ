@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "../App.css";
 import { Container, Row, Col, Button, Modal, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import "../Landing/Landing.css";
 
 export default class Landing extends Component {
     constructor(props) {
@@ -33,9 +34,9 @@ export default class Landing extends Component {
                     show={login} onHide={() => this.handleLogin(login)}
                 >
                     <Modal.Header>
-                        <Modal.Title className="modalT">Login</Modal.Title>
+                        <Modal.Title className="modalT font">Login</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>
+                    <Modal.Body className="font">
                         <Form.Group>
                             <Form.Control type="email" placeholder="Email" />
                         </Form.Group>
@@ -43,7 +44,7 @@ export default class Landing extends Component {
                             <Form.Control type="password" placeholder="Password" />
                         </Form.Group>
                     </Modal.Body>
-                    <Modal.Footer>
+                    <Modal.Footer className="font">
                         <Button variant="outline-secondary" onClick={() => { this.handleLogin(login) }}>Close</Button>
                         <Link to="/home">
                             <Button variant="outline-secondary">
@@ -55,7 +56,7 @@ export default class Landing extends Component {
                 {/*  End Modal Login*/}
 
                 {/* modal register */}
-                <Modal show={register} onHide={() => this.handleRegister(register)}>
+                <Modal className="font" show={register} onHide={() => this.handleRegister(register)}>
                     <Modal.Header>
                         <Modal.Title className="modalT">Register</Modal.Title>
                     </Modal.Header>
