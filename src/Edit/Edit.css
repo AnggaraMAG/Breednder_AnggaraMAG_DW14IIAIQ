@@ -2,7 +2,9 @@ body::-webkit-scrollbar {
   display: none;
 }
 html {
-  overflow-y: scroll;
+  overflow: scroll;
+  scrollbar-width: none;
+  overflow: auto;
 }
 .aturcard {
   width: 100px;
@@ -51,7 +53,8 @@ html {
 }
 
 .scrollV {
-  overflow-y: scroll;
+  overflow: auto;
   height: 350px;
-  width: 330px;
+  width: 320px;
+  scrollbar-width: none;
 }

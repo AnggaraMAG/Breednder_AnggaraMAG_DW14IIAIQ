@@ -6,8 +6,6 @@ export default [
         name: "Heather",
         age: 32,
         distance: "4 miles away",
-        text:
-            "My nickname is Gilette because I'm the best a man can get. Also I will cut you."
     },
     {
         pics: [
@@ -16,7 +14,6 @@ export default [
         name: "Chloe",
         age: 18,
         distance: "1 mile away",
-        text: "The C and the L are silent."
     },
     {
         pics: [
@@ -24,8 +21,7 @@ export default [
         ],
         name: "Helen",
         age: 19,
-        distance: "3 miles away",
-        text: "Aspiring MILF"
+        distance: "3 miles away"
     },
     {
         pics: [
@@ -33,8 +29,7 @@ export default [
         ],
         name: "Savannah",
         age: 29,
-        distance: "3 miles away",
-        text: "A little known fact is that I cover about 40% of Africa."
+        distance: "3 miles away"
     },
     {
         pics: [
@@ -43,8 +38,6 @@ export default [
         name: "Heather",
         age: 32,
         distance: "4 miles away",
-        text:
-            "My nickname is Gilette because I'm the best a man can get. Also I will cut you."
     },
     {
         pics: [
@@ -52,8 +45,7 @@ export default [
         ],
         name: "Chloe",
         age: 18,
-        distance: "1 mile away",
-        text: "The C and the L are silent."
+        distance: "1 mile away"
     },
     {
         pics: [
@@ -61,8 +53,7 @@ export default [
         ],
         name: "Helen",
         age: 19,
-        distance: "3 miles away",
-        text: "Aspiring MILF"
+        distance: "3 miles away"
     },
     {
         pics: [
@@ -70,8 +61,7 @@ export default [
         ],
         name: "Savannah",
         age: 29,
-        distance: "3 miles away",
-        text: "A little known fact is that I cover about 40% of Africa."
+        distance: "3 miles away"
     },
     {
         pics: [
@@ -80,7 +70,5 @@ export default [
         name: "Jane",
         age: 22,
         distance: "2 miles away",
-        text:
-            "On the first date I will carve our initials in a tree. It's the most romantic way to let you know I have a knife."
     }
 ];

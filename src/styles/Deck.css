@@ -26,10 +26,10 @@
   background-size: auto 85%;
   background-repeat: no-repeat;
   background-position: center center;
-  width: 400px;
-  max-width: 500px;
+  width: 300px;
+  max-width: 300px;
   height: 500px;
-  max-height: 500px;
+  max-height: 570px;
   will-change: transform;
   border-radius: 10px;
   box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4),
@@ -37,7 +37,7 @@
 }
 
 .swipe img {
-  height: 300px;
+  height: 420px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -51,7 +51,7 @@
 .swipe h2 {
   display: inline-block;
   margin-right: 10px;
-  font-size: 30px;
+  font-size: 25px;
   text-align: center;
 }
 
@@ -64,12 +64,12 @@
 .swipe h5 {
   margin-top: -15px;
   margin-left: 2px;
-  color: lightgray;
+  color: black;
   font-size: 20px;
   text-align: center;
 }
 .swipe h5:last-of-type {
-  color: darkgray;
+  color: black;
   font-size: 5px;
 }
 
@@ -86,5 +86,5 @@
 }
 
 .swipe .slider-control-bottomcenter > ul > li > button {
-  color: salmon !important;
+  color: rgb(218, 209, 208) !important;
 }

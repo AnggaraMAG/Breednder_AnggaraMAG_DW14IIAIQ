@@ -94,8 +94,8 @@ const Edit = () => {
                                     })}
                                 </p>
                             </Row>
-                            <div className="scrollV">
-                                <Card.Body>
+                            <div>
+                                <Card.Body className="scrollV" id="styleSc">
                                     <Card.Text>
                                         <Form>
                                             <Form.Label>Name Pet</Form.Label>

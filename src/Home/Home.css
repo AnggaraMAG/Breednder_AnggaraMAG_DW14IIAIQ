@@ -110,3 +110,20 @@
 .font {
   font-family: "Courgette", cursive;
 }
+
+.dibawah {
+  margin-top: 800px;
+  margin-left: 200px;
+}
+
+.iconbg:hover {
+  background-color: whitesmoke;
+  border: 10px;
+  color: black;
+  border-radius: 5px;
+}
+
+.fontbawah {
+  color: black;
+  font-family: "Courgette", cursive;
+}

@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import "../App.css";
 import { Container, Row, Col, Button, Modal, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import "../Landing/Landing.css";
+import { connect } from "react-redux";
+import { getSpecies } from '../_actions/species';
+import { login } from "../_actions/auth";
 
-export default class Landing extends Component {
+class Landing extends Component {
+    componentDidMount() {
+        this.props.getSpecies();
+    }
     constructor(props) {
         super(props);
         this.state = {
             login: false,
-            register: false
+            register: false,
+            email: "",
+            password: "",
         };
 
     }
@@ -25,8 +33,25 @@ export default class Landing extends Component {
             register: !open
         })
     }
+
+    loginmasuk = () => {
+
+        const data = {
+            email: this.state.email,
+            password: this.state.password,
+        }
+        this.props.getLogin(data)
+    }
+    handlechange = (e) => {
+        e.preventDefault()
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
     render() {
         const { login, register } = this.state;
+        const { data } = this.props.species;
+        // console.log(`aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaxxx${data}`);
         return (
             <>
                 {/* Modal Login */}
@@ -38,19 +63,17 @@ export default class Landing extends Component {
                     </Modal.Header>
                     <Modal.Body className="font">
                         <Form.Group>
-                            <Form.Control type="email" placeholder="Email" />
+                            <Form.Control onChange={this.handlechange} type="email" placeholder="Email" name="email" />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Control onChange={this.handlechange} type="password" placeholder="Password" name="password" />
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer className="font">
                         <Button variant="outline-secondary" onClick={() => { this.handleLogin(login) }}>Close</Button>
-                        <Link to="/home">
-                            <Button variant="outline-secondary">
-                                Login
+                        <Button variant="outline-secondary" onClick={this.loginmasuk}>
+                            Login
                             </Button>
-                        </Link>
                     </Modal.Footer>
                 </Modal>
                 {/*  End Modal Login*/}
@@ -84,12 +107,17 @@ export default class Landing extends Component {
                         </Form.Group>
                         <Form.Group>
                             <Form.Control as='select'  >
-                                <option value="" >Spesies Pet</option>
-                                <option value="" >Reptile</option>
+                                <option value="">Species</option>
+                                {data.map((item, index) => (
+                                    <option key={index}>{item.name}</option>
+                                ))}
                             </Form.Control>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Control type="text" placeholder="Age Pet" />
+                            <Form.Control as="select">
+                                <option value=""> Age</option>
+                                <option value="">Teenager</option>
+                            </Form.Control>
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
@@ -135,3 +163,16 @@ export default class Landing extends Component {
         )
     }
 }
+const mapStateToProps = state => {
+    return {
+        species: state.species
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getSpecies: () => dispatch(getSpecies()),
+        getLogin: (data) => dispatch(login(data)),
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Landing);

@@ -25,12 +25,6 @@ const Profile = () => {
                             </Link>
                             <span style={{ marginTop: 20, marginLeft: 20 }} ><h3 className="font">Profile</h3></span>
                         </Row>
-                        {/* <div className="mt-3">
-                            <Link to="/home">
-                                <Button variant="outline-light">Home</Button>
-                            </Link>
-
-                        </div> */}
                     </Card.Header>
                     <Card.Body>
                         <Card.Title>
@@ -115,7 +109,7 @@ const Profile = () => {
             </Col>
             <div>
                 <Modal show={show} onHide={handleClose}>
-                    <div className="bgmodal">
+                    <div className="bgmodal" >
                         <Modal.Header closeButton className="text-center">
                             <Modal.Title>Premium</Modal.Title>
                         </Modal.Header>
