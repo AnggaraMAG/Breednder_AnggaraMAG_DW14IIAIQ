@@ -6,10 +6,12 @@ import "../Landing/Landing.css";
 import { connect } from "react-redux";
 import { getSpecies } from '../_actions/species';
 import { login } from "../_actions/auth";
+import { getAges } from "../_actions/ages";
 
 class Landing extends Component {
     componentDidMount() {
         this.props.getSpecies();
+        this.props.getAges();
     }
     constructor(props) {
         super(props);
@@ -35,7 +37,6 @@ class Landing extends Component {
     }
 
     loginmasuk = () => {
-
         const data = {
             email: this.state.email,
             password: this.state.password,
@@ -51,7 +52,8 @@ class Landing extends Component {
     render() {
         const { login, register } = this.state;
         const { data } = this.props.species;
-        // console.log(`aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaxxx${data}`);
+        
+        // console.log(this.props, 'ages')
         return (
             <>
                 {/* Modal Login */}
@@ -115,8 +117,10 @@ class Landing extends Component {
                         </Form.Group>
                         <Form.Group>
                             <Form.Control as="select">
-                                <option value=""> Age</option>
-                                <option value="">Teenager</option>
+                                <option value=""> Age </option>
+                                {this.props.ages.data.map((item, index) => (
+                                    <option key={index}>{item.age}</option>
+                                ))}
                             </Form.Control>
                         </Form.Group>
                     </Modal.Body>
@@ -165,7 +169,8 @@ class Landing extends Component {
 }
 const mapStateToProps = state => {
     return {
-        species: state.species
+        species: state.species,
+        ages: state.ages
     }
 }
 
@@ -173,6 +178,7 @@ const mapDispatchToProps = dispatch => {
     return {
         getSpecies: () => dispatch(getSpecies()),
         getLogin: (data) => dispatch(login(data)),
+        getAges: () => dispatch(getAges()),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);

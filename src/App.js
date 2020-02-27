@@ -8,10 +8,8 @@ import Edit from './Edit/Edit';
 import { connect } from "react-redux";
 
 function App({ auth }) {
-
   return (
     <div>
-      {/* <Landing /> */}
       <Router>
         {!auth.authenticated ? (
           <Switch>
@@ -33,7 +31,6 @@ function App({ auth }) {
               </Route>
               <Redirect to="/home" />
             </Switch>
-
           )}
       </Router>
     </div>
@@ -42,14 +39,7 @@ function App({ auth }) {
 const mapStateToProps = state => {
   return {
     auth: state.auth,
-
   }
 }
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//       getSpecies: () => dispatch(getSpecies()),
-//       getLogin: (data) => dispatch(login(data)),
-//   }
-// }
 export default connect(mapStateToProps)(App);

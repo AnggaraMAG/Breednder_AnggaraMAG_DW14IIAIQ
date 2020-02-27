@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_AUTH, LOGIN } from "../config/constans";
+import { GET_AUTH, LOGIN, REGISTER } from "../config/constans";
 import { API } from "../config/api";
 
 export const getAuth = () => {
@@ -34,7 +34,7 @@ export const getAuth = () => {
 };
 
 export const login = data => {
-    console.log("data action loginnnnn", data);
+    // console.log("data action loginnnnn", data);
     return {
         type: LOGIN,
         payload: async () => {
@@ -44,3 +44,13 @@ export const login = data => {
         }
     };
 };
+
+export const register = data => {
+    return {
+        type: REGISTER,
+        payload: async () => {
+            const res = await API.post("/register", data);
+            return res.data.data;
+        }
+    }
+}
