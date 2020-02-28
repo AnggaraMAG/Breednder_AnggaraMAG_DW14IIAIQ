@@ -1,4 +1,4 @@
-import { GET_AUTH,LOGIN,REGISTER } from "../config/constans";
+import { GET_AUTH,LOGIN,REGISTER,LOGOUT } from "../config/constans";
 const initState = {
     authenticated: false,
     user: null,
@@ -17,8 +17,10 @@ const auth = (state = initState, action) => {
             console.log("payload", action.payload);
             return {
                 ...state,
-                data: action.payload,
-                loading: false
+                authenticated:true,
+                user: action.payload,
+                loading: false,
+                error:null
             };
         case `${GET_AUTH}_REJECTED`:
             console.log("payload", action.payload);
@@ -51,20 +53,31 @@ const auth = (state = initState, action) => {
 
             return {
                 ...state,
-                isLoading: true
+                authenticated:true,
+                user:action.payload,
+                isLoading: true,
+                error:null,
             };
         case `${REGISTER}_FULFILLED`:
             return {
                 ...state,
-                data: [...state.data, action.payload],
+                data: action.payload,
                 isLoading: false
             };
         case `${REGISTER}_REJECTED`:
             return {
                 ...state,
                 isLoading: false,
-                isError: true
+                isError: action.payload.response.data.message
             };
+            case `${LOGOUT}`:
+                return {
+                    ...state,
+                    authenticated:false,
+                    user:null,
+                    isLoading:false,
+                    isError:null
+                }
         default:
             return state;
     }

@@ -1,36 +1,27 @@
-import axios from "axios";
-import { GET_AUTH, LOGIN, REGISTER } from "../config/constans";
-import { API } from "../config/api";
+// import axios from "axios";
+import { GET_AUTH, LOGIN, REGISTER, LOGOUT } from "../config/constans";
+import { API,setAuthToken } from "../config/api";
 
 export const getAuth = () => {
     // CHECK AUTH TOKEN
     const token = localStorage.getItem("token");
     if (token) {
         //// cek token from server
+        return {
+            type:GET_AUTH,
+        payload: async () => {
+            setAuthToken(token);
+            const res = await API.get('/autoauth');
+            return res.data.data
+        }
+        };        
     } else {
         ////redirect to login page
-    }
-    return {
-        type: GET_AUTH,
-        payload: async () => {
-            const res = await axios.get("https://jsonplaceholder.typicode.com/users");
-            console.log("ressss", res.data);
-            return res.data;
+        return {
+            type:LOGOUT,
+            payload:{}
         }
-    };
-    //   return dispatch => {
-    //     setTimeout(() => {
-    //       dispatch({
-    //         type: "GET_USERS",
-    //         payload: {}
-    //       });
-    //     }, 3000);
-    //   };
-
-    //   return {
-    //     type: "GET_USERS",
-    //     payload: {}
-    //   };
+    }
 };
 
 export const login = data => {
@@ -46,10 +37,14 @@ export const login = data => {
 };
 
 export const register = data => {
+    console.log(`input dataaaaaaaaaaaaaaaadata`,data);
     return {
         type: REGISTER,
         payload: async () => {
             const res = await API.post("/register", data);
+            localStorage.setItem("token",res.data.token);
+            // localStorage.setItem("email",res.data.data.email);
+            // localStorage.setItem("userId",res.data.data.id);
             return res.data.data;
         }
     }

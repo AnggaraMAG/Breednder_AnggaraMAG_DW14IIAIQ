@@ -5,7 +5,7 @@ import { Container, Row, Col, Button, Modal, Form } from 'react-bootstrap';
 import "../Landing/Landing.css";
 import { connect } from "react-redux";
 import { getSpecies } from '../_actions/species';
-import { login } from "../_actions/auth";
+import { login, register } from "../_actions/auth";
 import { getAges } from "../_actions/ages";
 
 class Landing extends Component {
@@ -20,7 +20,24 @@ class Landing extends Component {
             register: false,
             email: "",
             password: "",
+            regist: {
+                name: null,
+                email: null,
+                password: null,
+                phone: null,
+                address: null,
+                pet: {
+                    name: null,
+                    gender: null,
+                    species: null,
+                    age: null,
+                }
+
+            }
         };
+        this.registerChange = this.registerChange.bind(this);
+        this.registerSubmit = this.registerSubmit.bind(this);
+
 
     }
 
@@ -35,6 +52,41 @@ class Landing extends Component {
             register: !open
         })
     }
+    registerChange = e => {
+        e.preventDefault();
+        this.setState({
+            regist: {
+                name: this.refs.name.value,
+                email: this.refs.emailregister.value,
+                password: this.refs.passwordregister.value,
+                phone: this.refs.phone.value,
+                address: this.refs.address.value,
+                pet: {
+                    name: this.refs.namepet.value,
+                    gender: this.refs.gender.value,
+                    species: this.refs.species.value,
+                    age: this.refs.age.value,
+                }
+
+            }
+        })
+    }
+    registerSubmit = () => {
+        const data = {
+            name: this.state.regist.name,
+            email: this.state.regist.email,
+            password: this.state.regist.password,
+            phone: this.state.regist.phone,
+            address: this.state.regist.address,
+            pet: {
+                name: this.state.regist.pet.name,
+                gender: this.state.regist.pet.gender,
+                species: this.state.regist.pet.species,
+                age: this.state.regist.pet.age,
+            }
+        }
+        this.props.register(data)
+    }
 
     loginmasuk = () => {
         const data = {
@@ -48,11 +100,13 @@ class Landing extends Component {
         this.setState({
             [e.target.name]: e.target.value
         })
+        console.log(e.target.value);
     }
     render() {
         const { login, register } = this.state;
         const { data } = this.props.species;
-        
+        // const {loading,error} = login;
+
         // console.log(this.props, 'ages')
         return (
             <>
@@ -87,46 +141,58 @@ class Landing extends Component {
                     </Modal.Header>
                     <Modal.Body>
                         <Form.Group>
-                            <Form.Control type="text" placeholder="Breeder" />
+                            <label>{this.state.regist.name}</label><br/>
+                            <label>{this.state.regist.email}</label><br/>
+                            <label>{this.state.regist.password}</label><br/>
+                            <label>{this.state.regist.phone}</label><br/>
+                            <label>{this.state.regist.address}</label><br/>
+                            <label>{this.state.regist.pet.name}</label><br/>
+                            <label>{this.state.regist.pet.gender}</label><br/>
+                            <label>{this.state.regist.pet.species}</label><br/>
+                            <label>{this.state.regist.pet.age}</label>
+                            <Form.Control onChange={this.registerChange} type="text" placeholder="Breeder" ref="name" />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Control type="email" placeholder="Email" />
+                            <Form.Control onChange={this.registerChange} type="email" placeholder="Email" ref="emailregister" />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Control onChange={this.registerChange} type="password" placeholder="Password" ref="passwordregister" />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Control type="number" placeholder="Phone Breeder" />
+                            <Form.Control type="number" placeholder="Phone Breeder" ref="phone" onChange={this.registerChange} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Control as="textarea" rows="3" placeholder="Address Breeder" />
+                            <Form.Control as="textarea" rows="3" placeholder="Address Breeder" ref="address" onChange={this.registerChange} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Control type="text" placeholder="Name Pet" />
+                            <Form.Control type="text" placeholder="NamePet" ref="namepet" onChange={this.registerChange} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Control type="text" placeholder="Gender Pet" />
+                            <Form.Control type="text" placeholder="Gender Pet" ref="gender" onChange={this.registerChange} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Control as='select'  >
+                            <Form.Control as='select' value={this.state.species} onChange={this.registerChange} ref="species" >
                                 <option value="">Species</option>
                                 {data.map((item, index) => (
-                                    <option key={index}>{item.name}</option>
+                                    <option key={index} value={item.id}>{item.name}</option>
                                 ))}
                             </Form.Control>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Control as="select">
+                            <Form.Control as="select" value={this.state.age} onChange={
+                                this.registerChange} ref="age"
+                            
+                            >
                                 <option value=""> Age </option>
                                 {this.props.ages.data.map((item, index) => (
-                                    <option key={index}>{item.age}</option>
+                                    <option key={index} value={item.id}>{item.age}</option>
                                 ))}
                             </Form.Control>
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="outline-secondary" onClick={() => this.handleRegister(register)}>Close</Button>
-                        <Button variant="outline-secondary">
+                        <Button variant="outline-secondary" onClick={this.registerSubmit}>
                             Register
                         </Button>
                     </Modal.Footer>
@@ -170,7 +236,8 @@ class Landing extends Component {
 const mapStateToProps = state => {
     return {
         species: state.species,
-        ages: state.ages
+        ages: state.ages,
+        auth: state.auth,
     }
 }
 
@@ -179,6 +246,7 @@ const mapDispatchToProps = dispatch => {
         getSpecies: () => dispatch(getSpecies()),
         getLogin: (data) => dispatch(login(data)),
         getAges: () => dispatch(getAges()),
+        register: data => dispatch(register(data)),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);
