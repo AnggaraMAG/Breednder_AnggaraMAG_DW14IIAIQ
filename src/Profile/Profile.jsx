@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col, Card, Image, Form, Button, Carousel, Modal } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import image3 from "../Landing/kucing.jpg"
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import RangeSlider from 'react-bootstrap-range-slider';
 import './Profile.css'
+import { connect } from "react-redux";
+import { getUser } from "../_actions/user";
 
-const Profile = () => {
+const Profile = ({ user, getUser }) => {
+    useEffect(() => {
+        getUser();
+    }, []);
+    // console.log(props.users,"tes usersss");  
     const [value, setValue] = useState(0);
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -34,19 +39,19 @@ const Profile = () => {
                             <Form.Label>
                                 Email
                             </Form.Label>
-                            <Form.Control type="email" placeholder="udingambut@gmail.com" readOnly />
+                            <Form.Control type="email" placeholder={user.user.email} readOnly />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>
                                 Phone
                             </Form.Label>
-                            <Form.Control type="number" placeholder="641644444" readOnly />
+                            <Form.Control type="number" placeholder={user.user.phone} readOnly />
                         </Form.Group>
                         <Card.Title>
                             Discovery Settings
                         </Card.Title>
                         <Form.Group>
-                            Maximum Distance    <b>{value}</b>
+                            Maximum Distance <b>{value}</b>
                             <RangeSlider
                                 max='10'
                                 value={value}
@@ -90,10 +95,10 @@ const Profile = () => {
                     <Card.Body>
                         <Card.Title>Udin</Card.Title>
                         <Card.Text>
-                            <i className="fas fa-user"> Breeder : Liu Kang</i><br></br>
+                            <i className="fas fa-user"> Breeder : {user.user.name}</i><br></br>
                             <i className="fas fa-street-view"> 10 Kilometer dari sini</i><br></br>
                             <i className="fas fa-venus-mars"> Male - Adult</i><br></br>
-                            <i className="fas fa-phone"> Phone Breeder : 6416444444</i><br></br>
+                            <i className="fas fa-phone"> Phone Breeder :{user.user.phone} </i><br></br>
                         </Card.Text>
                         <Card.Title>
                             About Pet
@@ -158,4 +163,15 @@ const Profile = () => {
         </Row>
     )
 }
-export default Profile;
+const mapStateToProps = state => {
+    return {
+        user: state.user,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getUser: () => dispatch(getUser())
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

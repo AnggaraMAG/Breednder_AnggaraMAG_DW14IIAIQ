@@ -35,8 +35,8 @@ class Landing extends Component {
 
             }
         };
-        this.registerChange = this.registerChange.bind(this);
-        this.registerSubmit = this.registerSubmit.bind(this);
+        // this.registerChange = this.registerChange.bind(this);
+        // this.registerSubmit = this.registerSubmit.bind(this);
 
 
     }
@@ -119,10 +119,10 @@ class Landing extends Component {
                     </Modal.Header>
                     <Modal.Body className="font">
                         <Form.Group>
-                            <Form.Control onChange={this.handlechange} type="email" placeholder="Email" name="email" />
+                            <Form.Control onChange={this.handlechange} type="email" placeholder="Email" name="email"/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Control onChange={this.handlechange} type="password" placeholder="Password" name="password" />
+                            <Form.Control onChange={this.handlechange} type="password" placeholder="Password" name="password"/>
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer className="font">
@@ -141,15 +141,15 @@ class Landing extends Component {
                     </Modal.Header>
                     <Modal.Body>
                         <Form.Group>
-                            <label>{this.state.regist.name}</label><br/>
-                            <label>{this.state.regist.email}</label><br/>
-                            <label>{this.state.regist.password}</label><br/>
-                            <label>{this.state.regist.phone}</label><br/>
-                            <label>{this.state.regist.address}</label><br/>
-                            <label>{this.state.regist.pet.name}</label><br/>
-                            <label>{this.state.regist.pet.gender}</label><br/>
-                            <label>{this.state.regist.pet.species}</label><br/>
-                            <label>{this.state.regist.pet.age}</label>
+                            {/* <label>{this.state.regist.name}</label><br />
+                            <label>{this.state.regist.email}</label><br />
+                            <label>{this.state.regist.password}</label><br />
+                            <label>{this.state.regist.phone}</label><br />
+                            <label>{this.state.regist.address}</label><br />
+                            <label>{this.state.regist.pet.name}</label><br />
+                            <label>{this.state.regist.pet.gender}</label><br />
+                            <label>{this.state.regist.pet.species}</label><br />
+                            <label>{this.state.regist.pet.age}</label> */}
                             <Form.Control onChange={this.registerChange} type="text" placeholder="Breeder" ref="name" />
                         </Form.Group>
                         <Form.Group>
@@ -168,7 +168,11 @@ class Landing extends Component {
                             <Form.Control type="text" placeholder="NamePet" ref="namepet" onChange={this.registerChange} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Control type="text" placeholder="Gender Pet" ref="gender" onChange={this.registerChange} />
+                            <Form.Control as="select" placeholder="Gender Pet" ref="gender" onChange={this.registerChange} >
+                            <option>Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            </Form.Control>
                         </Form.Group>
                         <Form.Group>
                             <Form.Control as='select' value={this.state.species} onChange={this.registerChange} ref="species" >
@@ -181,7 +185,6 @@ class Landing extends Component {
                         <Form.Group>
                             <Form.Control as="select" value={this.state.age} onChange={
                                 this.registerChange} ref="age"
-                            
                             >
                                 <option value=""> Age </option>
                                 {this.props.ages.data.map((item, index) => (
