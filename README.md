@@ -1,68 +1,112 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Petnder
 
-## Available Scripts
+Petnder is application for breeder, find and match other pets.
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Server Setup](#server-setup)
+  - [Client Setup](#client-setup)
+- [Screenshots](#screenshots)
+- [Built With](#built-with)
+- [Author](#author)
+- [License](#license)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Getting Started
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Before starting to install the project, there're some things that need to be done first.
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Make sure all of these are properly installed in your system.
 
-### `npm run build`
+| Application  | Download                                                                            |
+| ------------ | ----------------------------------------------------------------------------------- |
+| Git          | [Windows](https://gitforwindows.org/) / [Linux](https://git-scm.com/download/linux) / [Mac](https://git-scm.com/download/mac)  |
+| Node.js      | [Link](https://nodejs.org/en/download/)                                             |
+| MySQL        | [Link](https://www.mysql.com/downloads/)                                            |
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+First, clone this repository into your system.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+git clone https://github.com/setyawanandik/Petnder_DW14GLU9N.git
+```
 
-### `npm run eject`
+Then, install all the packages that described in `package.json` of both `client` and `server` directories.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+npm install
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Server Setup
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+For the server setup, first, make sure your MySQL services is running fine. In `server` directory, you'll find `config.json` inside `config` folder. Open and edit the `development` configuration to match your database setup.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "database_development",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+```
 
-## Learn More
+After completing the database configuration setup, migrate all the required tables.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+npm run build
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+We also need to configure some environtment variables for the server, let's create .env file in server's root project, open and edit it, then input the code below.
 
-### Code Splitting
+```
+PORT=5000
+SECRET_KEY=ThisIsTheSecretKey
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+The `SECRET_KEY` and `PORT` you can custom it as you wish.
 
-### Analyzing the Bundle Size
+And for the last step, running the server
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+```
+npm start
+```
 
-### Making a Progressive Web App
+### Client Setup
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Before running the application, we need to configure an environtment variable for the client, let's find .env file in client's root project, open and edit it.
 
-### Advanced Configuration
+```
+REACT_APP_BASE_BACKEND_URL=http://localhost:5000
+```
+Note that the REACT_APP_BASE_BACKEND_URL above is the address of the server previously run, making sure the ip and port are the same with server address.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Then, run the web application.
 
-### Deployment
+`npm run start`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Wait till the application is opened into your browser. Now, you can explore Petnder and its features. Enjoy!
 
-### `npm run build` fails to minify
+## Screenshots
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+////////
+
+## Built With
+
+- [React JS](https://reactjs.org/) - Front-end
+- [Express JS](https://expressjs.com) - Back-end
+- [MySQL](https://www.mysql.com) - Database
+
+## Author
+
+**M Anggara Gultom** - [AnggaraMAG](https://github.com/AnggaraMAG)
+
+## License
+
+This project is licensed under the GNU General Public v3.0 License - see the [LICENSE](LICENSE) file for details
